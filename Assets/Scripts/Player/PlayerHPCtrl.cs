@@ -6,6 +6,11 @@ using System.Collections;
 using Shooter.Item;
 using Shooter.Player.Delegate;
 
+namespace Shooter.Player.Delegate{
+	//fix the lineskill dsiplay bug
+	public delegate IEnumerator PlayerDeadCoroutine(float delayTime);
+
+}
 
 namespace Shooter.Player{
 public class PlayerHPCtrl : MonoBehaviour {
@@ -14,11 +19,13 @@ public class PlayerHPCtrl : MonoBehaviour {
 		public event Action onPlayerDamaged;
 		public event PlayerHpChange onPlayerHPChange;
 		public event GetItem onPlayerGetHPItem;
+		public event PlayerDeadCoroutine onPlayerDeadForDelay;
 		
 
     
 		public float startHp = 100.0f;                                                         
 		public AudioClip deathClip;
+		[SerializeField]private float _deadDelayTime = 2.0f;
 		private float _curHp;
 		public float CurHp {
 			get {
@@ -30,6 +37,7 @@ public class PlayerHPCtrl : MonoBehaviour {
 		private PlayerMoveCtrl _moveCtrl;
 		private PlayerShootingCtrl _pShootingCtrl;
 		private bool _isDead = false;
+
 
 		void Awake(){
 			this._audio = this.GetComponent<AudioSource> ();
@@ -76,8 +84,11 @@ public class PlayerHPCtrl : MonoBehaviour {
 		void dead(){
 			Debug.Log("Player Dead!");
 			if (this.onPlayerDead != null) {
-				Debug.Log("call the event for player dead");
+//				Debug.Log("call the event for player dead");
 				this.onPlayerDead ();
+			}
+			if (this.onPlayerDeadForDelay != null) {
+				StartCoroutine(this.onPlayerDeadForDelay(this._deadDelayTime));
 			}
 			this._isDead = true;
 			// Tell the animator that the player is dead.

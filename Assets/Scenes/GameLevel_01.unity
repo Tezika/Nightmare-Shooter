@@ -159,7 +159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1001 &217182933
 Prefab:
   m_ObjectHideFlags: 0
@@ -520,7 +520,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!114 &377499188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,7 +833,7 @@ Transform:
   - {fileID: 540413366}
   - {fileID: 1644091429}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1001 &1090313395
 Prefab:
   m_ObjectHideFlags: 0

@@ -55,7 +55,7 @@ namespace Shooter.Enemy.Boss
 			this._capsuleCollider.isTrigger = true;
 			this._moveCtrl.enabled = false;
 			this._attackCtrl.enabled = false;
-			this.GetComponent<NavMeshAgent> ().enabled = false;
+			this.GetComponent<UnityEngine.AI.NavMeshAgent> ().enabled = false;
 			this.GetComponent<Rigidbody> ().isKinematic = true;
 			this._isSinking = true;
 			Destroy (this.gameObject, 3.0f);

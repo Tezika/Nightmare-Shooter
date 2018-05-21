@@ -97,7 +97,7 @@ public class EnemyHpCtrl : MonoBehaviour {
 
 		//animation call func
 		public void startSinking(){
-			this.GetComponent<NavMeshAgent> ().enabled = false;
+			this.GetComponent<UnityEngine.AI.NavMeshAgent> ().enabled = false;
 			this.GetComponent<Rigidbody> ().isKinematic = true;
 			this._isSinking = true;
 			StartCoroutine (this.waitFor (2.0f));

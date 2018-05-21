@@ -6,7 +6,7 @@ namespace Shooter.Enemy
 {
 public class EnemyMoveCtrl : MonoBehaviour {
 		private Transform _playerTransform;
-		private NavMeshAgent _nav;
+		private UnityEngine.AI.NavMeshAgent _nav;
 //		private EnemyHpCtrl _eHpCtrl;
 		private PlayerHPCtrl _pHpCtrl;
 		private bool _isPlayerDead  = false;
@@ -14,7 +14,7 @@ public class EnemyMoveCtrl : MonoBehaviour {
 		void Awake(){
 			this._playerTransform = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform> ();
 			this._pHpCtrl = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHPCtrl> ();
-			this._nav = this.GetComponent<NavMeshAgent> ();
+			this._nav = this.GetComponent<UnityEngine.AI.NavMeshAgent> ();
 //			this._eHpCtrl = this.GetComponent<EnemyHpCtrl> ();
 		}
 		void OnEnable(){

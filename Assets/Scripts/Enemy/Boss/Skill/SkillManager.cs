@@ -13,15 +13,18 @@ namespace Shooter.Enemy.Boss.Skill
 			this._bhc = this.GetComponent<BossHPCtrl> ();
 		}
 		void OnEnable(){
-		   this._phc.onPlayerDead += HandleonPlayerDead;
+//		   this._phc.onPlayerDead += HandleonPlayerDead;
 		   this._bhc.onBossDead  += HandleonBossDead;
+		   this._phc.onPlayerDeadForDelay += HandleonPlayerDeadForDelay;
+		}
+
+		IEnumerator HandleonPlayerDeadForDelay (float delayTime){
+			yield return  new WaitForSeconds (delayTime);
+			this.cancleSkills ();
 		}
 
 		void HandleonBossDead ()
 		{
-			this.cancleSkills ();
-		}
-		void HandleonPlayerDead (){
 			this.cancleSkills ();
 		}
 		void cancleSkills(){
@@ -32,7 +35,7 @@ namespace Shooter.Enemy.Boss.Skill
 			this.enabled = false;
 		}
 		void OnDisable(){
-			this._phc.onPlayerDead -= HandleonPlayerDead;
+			this._phc.onPlayerDeadForDelay -= HandleonPlayerDeadForDelay;
 			this._bhc.onBossDead -= HandleonBossDead;
 		}
 		// Use this for initialization
