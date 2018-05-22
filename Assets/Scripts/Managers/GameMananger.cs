@@ -19,14 +19,17 @@ namespace Shooter.Game
 		public  AudioClip _vicClip;
 		public  AudioClip _failClip;
 		public  AudioClip _btnClip;
-		private AudioSource _audio;
+        private AudioSource _audio;
+
 		void Awake(){
 			this._phc = GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponent<PlayerHPCtrl> ();
 			this._psc = GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponentInChildren<PlayerShootingCtrl> ();
 			this._pmc = GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponent<PlayerMoveCtrl> ();
 			this._eManager = GameObject.FindGameObjectWithTag ("EnemyManager").gameObject.GetComponent<EnemyManager> ();
 			this._audio = GetComponent<AudioSource> ();
+
 		}
+
 		void OnEnable(){
 			this._phc.onPlayerDead += HandleonPlayerDead;
 			this._eManager.onBossDead += HandleonBossDead;
@@ -46,6 +49,7 @@ namespace Shooter.Game
 			this.playEffectSound (this._failClip);
 			StartCoroutine (waitForOver (waitingTime,"GameOver"));
 		}
+
 		IEnumerator waitForOver(float waitingTime,string aniClipTriggerName){
 			yield return new WaitForSeconds (waitingTime);
 			canvas.GetComponent<Animator>().SetTrigger(aniClipTriggerName);
@@ -55,15 +59,18 @@ namespace Shooter.Game
 			canvas.GetComponent<CanvasGroup> ().interactable = true;
 			canvas.GetComponent<CanvasGroup> ().blocksRaycasts = true;
 		}
+
 		void OnDisable(){
 			this._phc.onPlayerDead -= HandleonPlayerDead;
 			this._eManager.onBossDead -= HandleonBossDead;
 		}
+
 		void playEffectSound(AudioClip clip){
 			this._audio.clip = clip;
 			this._audio.Stop ();
 			this._audio.Play ();
 		}
+
 		public void onClickRestart(){
 			this.playEffectSound (this._btnClip);
 			Application.LoadLevel (Application.loadedLevel);
