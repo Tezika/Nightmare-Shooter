@@ -1,5 +1,5 @@
 # Nightmare-Shooter
-##General
+## General
 
 *Nightmare Shooter(NMS)* is a 2.5D rogue-like survival 🔫 game; It's models and scenes all come from the Unity official demo, *Survival Shooter*.  Now, there is a prototype level which contains three types of enemies and a boss. 
 
@@ -37,7 +37,7 @@ In NMS, there are four types of items for the player to pick up and affect the p
 
 * **Green Cube**: Recover player some HP.
 * **Blue Cube**: Increase player's move speed.
-* **Yellow Cube**: decrease player's shooting cooldown.
+* **Yellow Cube**: decrease player's shooting cooldown time.
 * **Red Cube**: Increase player's shooting damage.
 
 
@@ -50,12 +50,5 @@ As NMS is still in the prototype phase, in the future, I will do the following t
 * Reconsider its level design and implement the custom procedure generation algorithm to generate every level randomly, which will help it literally become a "rouge-like" game.
 * Refactor the player's control and make it support the joystick :joystick:
 * Replace current art resources to new ones.
-
-
-
-
-
-
-
 
 
